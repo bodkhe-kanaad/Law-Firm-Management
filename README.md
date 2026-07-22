@@ -1,5 +1,5 @@
 # Legal Case Management System
-### CPSC 304 Group 90 — Law Firm Database Project
+## Law Firm Database Project
 
 A JavaFX desktop application for managing law firm data including court cases, clients, lawyers, invoices, hearings, and evidence. Backed by an Oracle SQL database hosted on UBC's CS department servers.
 
