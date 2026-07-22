@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="backend.controller.LandingController"
+      spacing="20"
+      alignment="CENTER"
+      style="-fx-padding: 60;">
+
+    <Label text="Legal Case Management System"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <Label text="Select a module to get started."
+           style="-fx-font-size: 13px; -fx-text-fill: #555555;" />
+
+    <Separator />
+
+    <VBox spacing="12" alignment="CENTER" maxWidth="280">
+        <Button text="Court Case Management"
+                maxWidth="Infinity"
+                style="-fx-font-size: 14px; -fx-padding: 10 20;"
+                onAction="#handleGoToCrud" />
+
+        <Button text="Case Search"
+                maxWidth="Infinity"
+                style="-fx-font-size: 14px; -fx-padding: 10 20;"
+                onAction="#handleGoToSelection" />
+
+        <Button text="Invoice View"
+                maxWidth="Infinity"
+                style="-fx-font-size: 14px; -fx-padding: 10 20;"
+                onAction="#handleGoToProjection" />
+
+        <Button text="Case-Lawyer Lookup"
+                maxWidth="Infinity"
+                style="-fx-font-size: 14px; -fx-padding: 10 20;"
+                onAction="#handleGoToJoin" />
+
+        <Button text="Lawyer Workload Analytics"
+                maxWidth="Infinity"
+                style="-fx-font-size: 14px; -fx-padding: 10 20;"
+                onAction="#handleGoToAnalytics" />
+    </VBox>
+
+</VBox>

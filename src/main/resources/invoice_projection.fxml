@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root"
+      spacing="12"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="backend.controller.InvoiceProjectionController"
+      style="-fx-padding: 16;">
+
+    <!-- Header -->
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Button text="← Back" onAction="#handleBack" style="-fx-font-size: 13px;" />
+        <Label text="Invoice View"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- Instruction -->
+    <Label text="Check the columns you want to include. Their order in the list is the column order in the results table. Select an item and use Up / Down to reorder."
+           wrapText="true"
+           style="-fx-text-fill: #555555; -fx-font-size: 12px;" />
+
+    <Separator />
+
+    <!-- Column picker and order list -->
+    <HBox spacing="16">
+
+        <!-- Available columns -->
+        <VBox spacing="6" minWidth="170"
+              style="-fx-border-color: #cccccc; -fx-border-radius: 4; -fx-background-color: #f9f9f9; -fx-background-radius: 4; -fx-padding: 10;">
+            <Label text="Available Columns" style="-fx-font-weight: bold;" />
+            <Label text="Check to include in results."
+                   style="-fx-text-fill: #777777; -fx-font-size: 11px;" />
+            <CheckBox fx:id="invoiceIdCheck"  text="invoice_id" />
+            <CheckBox fx:id="amountCheck"     text="amount" />
+            <CheckBox fx:id="caseIdCheck"     text="case_id" />
+            <CheckBox fx:id="statusCodeCheck" text="status_code" />
+        </VBox>
+
+        <!-- Order list + reorder buttons -->
+        <VBox spacing="6" HBox.hgrow="ALWAYS"
+              style="-fx-border-color: #cccccc; -fx-border-radius: 4; -fx-background-color: #f9f9f9; -fx-background-radius: 4; -fx-padding: 10;">
+            <Label text="Column Order (left → right in results)" style="-fx-font-weight: bold;" />
+            <Label text="Select a column in the list, then use the buttons to adjust its position."
+                   wrapText="true"
+                   style="-fx-text-fill: #777777; -fx-font-size: 11px;" />
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <ListView fx:id="selectedColumnsList" prefHeight="110" HBox.hgrow="ALWAYS" />
+                <VBox spacing="6" alignment="TOP_CENTER">
+                    <Button text="↑ Up"   onAction="#handleMoveUp"   prefWidth="72" />
+                    <Button text="↓ Down" onAction="#handleMoveDown" prefWidth="72" />
+                </VBox>
+            </HBox>
+        </VBox>
+
+    </HBox>
+
+    <!-- Run button + inline status -->
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Button text="Run Projection Query" onAction="#runProjection"
+                style="-fx-font-weight: bold;" />
+        <Label fx:id="statusLabel" wrapText="true" style="-fx-font-size: 12px;" />
+    </HBox>
+
+    <Separator />
+
+    <!-- Results table -->
+    <TableView fx:id="resultTable" prefHeight="300" VBox.vgrow="ALWAYS" />
+
+</VBox>

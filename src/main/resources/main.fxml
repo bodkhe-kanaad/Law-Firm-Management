@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="backend.controller.MainController"
+      style="-fx-padding: 20;">
+
+    <!-- Header -->
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Button text="← Back" onAction="#handleBack" style="-fx-font-size: 13px;" />
+        <Label text="Court Case Management" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- TABLE -->
+    <TableView fx:id="caseTable" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="colCaseId"    text="Case ID"   prefWidth="80"/>
+            <TableColumn fx:id="colType"      text="Type"      prefWidth="120"/>
+            <TableColumn fx:id="colClientId"  text="Client ID" prefWidth="80"/>
+            <TableColumn fx:id="colLawyerId"  text="Lawyer ID" prefWidth="80"/>
+        </columns>
+    </TableView>
+
+    <Button text="Refresh Table" onAction="#handleRefresh"/>
+
+    <Separator/>
+
+    <!-- INSERT -->
+    <VBox spacing="6"
+          style="-fx-border-color: #cccccc; -fx-border-radius: 4; -fx-background-color: #f9f9f9; -fx-background-radius: 4; -fx-padding: 10;">
+        <Label text="Insert New Case" style="-fx-font-weight: bold;"/>
+        <HBox spacing="8">
+            <TextField fx:id="insertCaseId"    promptText="Case ID"   prefWidth="90"/>
+            <TextField fx:id="insertType"      promptText="Type"      prefWidth="130"/>
+            <TextField fx:id="insertClientId"  promptText="Client ID" prefWidth="90"/>
+            <TextField fx:id="insertLawyerId"  promptText="Lawyer ID" prefWidth="90"/>
+            <Button text="Insert" onAction="#handleInsert"/>
+        </HBox>
+        <Label fx:id="insertMsg" wrapText="true"/>
+    </VBox>
+
+    <!-- UPDATE -->
+    <VBox spacing="6"
+          style="-fx-border-color: #cccccc; -fx-border-radius: 4; -fx-background-color: #f9f9f9; -fx-background-radius: 4; -fx-padding: 10;">
+        <Label text="Update Case" style="-fx-font-weight: bold;"/>
+        <Label text="Enter a Case ID, then fill in only the fields you want to change. Click a row in the table to pre-fill the Case ID."
+               wrapText="true"
+               style="-fx-text-fill: #777777; -fx-font-size: 11px;"/>
+        <HBox spacing="8">
+            <TextField fx:id="updateCaseId"      promptText="Case ID (required)"  prefWidth="130"/>
+            <TextField fx:id="updateNewType"     promptText="New Type (optional)"  prefWidth="140"/>
+            <TextField fx:id="updateNewClientId" promptText="New Client ID (opt.)" prefWidth="140"/>
+            <TextField fx:id="updateNewLawyerId" promptText="New Lawyer ID (opt.)" prefWidth="140"/>
+            <Button text="Update" onAction="#handleUpdate"/>
+        </HBox>
+        <Label fx:id="updateMsg" wrapText="true"/>
+    </VBox>
+
+    <!-- DELETE -->
+    <VBox spacing="6"
+          style="-fx-border-color: #cccccc; -fx-border-radius: 4; -fx-background-color: #f9f9f9; -fx-background-radius: 4; -fx-padding: 10;">
+        <Label text="Delete Case" style="-fx-font-weight: bold;"/>
+        <HBox spacing="8">
+            <TextField fx:id="deleteCaseId" promptText="Case ID" prefWidth="90"/>
+            <Button text="Delete" onAction="#handleDelete"/>
+        </HBox>
+        <Label fx:id="deleteMsg" wrapText="true"/>
+    </VBox>
+
+</VBox>

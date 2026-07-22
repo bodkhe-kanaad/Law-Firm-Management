@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="backend.controller.CaseSelectionController"
+      spacing="10"
+      style="-fx-padding: 16;">
+
+    <!-- Header: Back + Title -->
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Button text="← Back" onAction="#handleBack"
+                style="-fx-font-size: 13px;" />
+        <Label text="Case Search"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- Instruction -->
+    <Label text="Add one or more filter conditions, choose an attribute, operator, and value for each, then click Run Query."
+           wrapText="true"
+           style="-fx-text-fill: #555555; -fx-font-size: 12px;" />
+
+    <!-- Attribute format guide -->
+    <Label text="Examples: Case ID 1001, Case Type Family/Criminal/Corporate, Client ID 1, Lawyer ID 101, Successful 0 or 1, Closing Date in YYYY-MM-DD format, for example 2025-03-01."
+           wrapText="true"
+           style="-fx-text-fill: #888888; -fx-font-size: 11px;" />
+
+    <Separator />
+
+    <!-- Condition buttons + Run Query -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="+ AND Condition" onAction="#handleAddAnd" />
+        <Button text="+ OR Condition" onAction="#handleAddOr" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button text="Run Query" onAction="#handleRunSelection"
+                style="-fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- Dynamic condition rows -->
+    <VBox fx:id="conditionsContainer" spacing="8" />
+
+    <!-- Validation / status feedback -->
+    <Label fx:id="statusLabel" wrapText="true"
+           style="-fx-font-size: 12px;" />
+
+    <!-- Results table -->
+    <TableView fx:id="resultTable" prefHeight="350" VBox.vgrow="ALWAYS" />
+
+</VBox>

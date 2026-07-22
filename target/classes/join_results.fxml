@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root"
+      spacing="12"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="backend.controller.JoinResultsController"
+      style="-fx-padding: 16;">
+
+    <!-- Header -->
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Button text="← Back" onAction="#handleBack" style="-fx-font-size: 13px;" />
+        <Label text="Case-Lawyer Lookup"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- Instruction -->
+    <Label text="Joins Court_Case, Client, and Lawyer. Select a case type to see all matching cases with the assigned client and lawyer names."
+           wrapText="true"
+           style="-fx-text-fill: #555555; -fx-font-size: 12px;" />
+
+    <Separator />
+
+    <!-- Input + Run -->
+    <VBox spacing="6"
+          style="-fx-border-color: #cccccc; -fx-border-radius: 4; -fx-background-color: #f9f9f9; -fx-background-radius: 4; -fx-padding: 10;">
+        <Label text="Filter by Case Type" style="-fx-font-weight: bold;" />
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <ComboBox fx:id="caseTypeField"
+                      promptText="Select a case type"
+                      prefWidth="200" />
+            <Button text="Run Join Query" onAction="#handleRunJoin"
+                    style="-fx-font-weight: bold;" />
+        </HBox>
+        <Label fx:id="statusLabel" wrapText="true" style="-fx-font-size: 12px;" />
+    </VBox>
+
+    <Separator />
+
+    <!-- Results table -->
+    <Label text="Results" style="-fx-font-weight: bold; -fx-font-size: 13px;" />
+    <TableView fx:id="resultTable" prefHeight="320" VBox.vgrow="ALWAYS">
+        <placeholder>
+            <Label text="Select a case type above and click Run Join Query." />
+        </placeholder>
+    </TableView>
+
+</VBox>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root"
+      spacing="12"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="backend.controller.AnalyticsController"
+      style="-fx-padding: 16;">
+
+    <!-- Header -->
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Button text="← Back" onAction="#handleBack" style="-fx-font-size: 13px;" />
+        <Label text="Lawyer Workload Analytics"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- Instruction -->
+    <Label text="Run pre-built analytical queries over lawyer workload data. Results appear in the shared table below."
+           wrapText="true"
+           style="-fx-text-fill: #555555; -fx-font-size: 12px;" />
+
+    <Separator />
+
+    <!-- Query buttons -->
+    <VBox spacing="6"
+          style="-fx-border-color: #cccccc; -fx-border-radius: 4; -fx-background-color: #f9f9f9; -fx-background-radius: 4; -fx-padding: 10;">
+        <Label text="Select a Query" style="-fx-font-weight: bold;" />
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="Total Hours per Lawyer"
+                    onAction="#handleGroupBy"
+                    prefWidth="240"
+                    style="-fx-padding: 6 12;" />
+            <Label text="GROUP BY: total hours logged per lawyer, ordered by hours desc."
+                   style="-fx-text-fill: #555555; -fx-font-size: 11px;" wrapText="true" />
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="Lawyers on Multiple Cases"
+                    onAction="#handleHaving"
+                    prefWidth="240"
+                    style="-fx-padding: 6 12;" />
+            <Label text="HAVING: lawyers with work logged on more than one distinct case."
+                   style="-fx-text-fill: #555555; -fx-font-size: 11px;" wrapText="true" />
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="Lawyers Above Average Hours"
+                    onAction="#handleNestedAggregation"
+                    prefWidth="240"
+                    style="-fx-padding: 6 12;" />
+            <Label text="Nested aggregation: lawyers whose total hours ≥ average total hours across all lawyers."
+                   style="-fx-text-fill: #555555; -fx-font-size: 11px;" wrapText="true" />
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="Lawyers with Work Logged on Every Assigned Case"
+                    onAction="#handleDivision"
+                    prefWidth="240"
+                    style="-fx-padding: 6 12;" />
+            <Label text="Division: lawyers who have logged work on every case assigned to them."
+                   style="-fx-text-fill: #555555; -fx-font-size: 11px;" wrapText="true" />
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="Hearing Schedule"
+                    onAction="#handleHearingSchedule"
+                    prefWidth="240"
+                    style="-fx-padding: 6 12;" />
+            <Label text="Join: all hearings with their case type and courthouse location."
+                   style="-fx-text-fill: #555555; -fx-font-size: 11px;" wrapText="true" />
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="Evidence per Case"
+                    onAction="#handleEvidencePerCase"
+                    prefWidth="240"
+                    style="-fx-padding: 6 12;" />
+            <Label text="Join: all evidence items with the hearing they were presented at."
+                   style="-fx-text-fill: #555555; -fx-font-size: 11px;" wrapText="true" />
+        </HBox>
+
+        <Label fx:id="statusLabel" wrapText="true" style="-fx-font-size: 12px;" />
+    </VBox>
+
+    <Separator />
+
+    <!-- Shared results table -->
+    <Label fx:id="tableTitle" text="Results" style="-fx-font-weight: bold; -fx-font-size: 13px;" />
+    <TableView fx:id="resultTable" prefHeight="300" VBox.vgrow="ALWAYS">
+        <placeholder>
+            <Label text="Click a query button above to populate this table." />
+        </placeholder>
+    </TableView>
+
+</VBox>
